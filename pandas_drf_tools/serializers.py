@@ -10,7 +10,8 @@ class DataFrameReadOnlyToDictRecordsSerializer(Serializer):
     """
     A read-only Serializer implementation that uses
     :func:`pandas.DataFrame.to_dict <pandas.DataFrame.to_dict>` to convert data to external
-    representation with custom orientation.
+    representation with 'records' orientation. This serializer is useful when a list of dictionaries
+    is required.
     """
     def to_internal_value(self, data):
         raise NotImplementedError('`to_representation()` must be implemented.')
