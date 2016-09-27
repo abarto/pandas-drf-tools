@@ -6,6 +6,19 @@ from rest_framework.serializers import (CharField, JSONField, ListField, Seriali
                                         ValidationError, api_settings)
 
 
+class DataFrameReadOnlyToDictRecordsSerializer(Serializer):
+    """
+    A read-only Serializer implementation that uses
+    :func:`pandas.DataFrame.to_dict <pandas.DataFrame.to_dict>` to convert data to external
+    representation with custom orientation.
+    """
+    def to_internal_value(self, data):
+        raise NotImplementedError('`to_representation()` must be implemented.')
+
+    def to_representation(self, instance):
+        return {'records': instance.to_dict(orient='records')}
+
+
 class DataFrameListSerializer(Serializer):
     """
     A Serializer implementation that uses
