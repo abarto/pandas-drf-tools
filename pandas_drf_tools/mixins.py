@@ -73,7 +73,6 @@ class UpdateDataFrameMixin(object):
 
     def perform_update(self, instance, serializer):
         validated_data = serializer.validated_data
-        import pdb; pdb.set_trace()
         instance.ix[validated_data.index, validated_data.columns] = validated_data[:]
         return instance
 
@@ -92,4 +91,5 @@ class DestroyDataFrameMixin(object):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     def perform_destroy(self, instance):
-        return self.get_dataframe.drop(instance.index)
+        dataframe = self.get_dataframe()
+        return dataframe.drop(instance.index)
