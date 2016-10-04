@@ -63,7 +63,7 @@ class GenericDataFrameAPIView(APIView):
 
         try:
             obj = dataframe.iloc[int(self.kwargs[self.lookup_url_kwarg])].to_frame().T
-        except (KeyError, ValueError):
+        except (IndexError, KeyError, ValueError):
             raise Http404
 
         # May raise a permission denied
