@@ -74,7 +74,9 @@ class UpdateDataFrameMixin(object):
     def perform_update(self, instance, serializer):
         validated_data = serializer.validated_data
         instance.ix[validated_data.index, validated_data.columns] = validated_data[:]
-        return instance
+        dataframe = self.get_dataframe()
+        dataframe.ix[instance.index] = instance
+        return dataframe
 
     def partial_update(self, request, *args, **kwargs):
         kwargs['partial'] = True
