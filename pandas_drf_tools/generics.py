@@ -44,6 +44,14 @@ class GenericDataFrameAPIView(APIView):
         dataframe = self.dataframe
         return dataframe
 
+    def update_dataframe(self, dataframe):
+        """
+        Indicates that the dataframe needs to be updated. The default implementation
+        just returns the argument. This method has to be ovewritten to make changing
+        operations stick.
+        """
+        return dataframe
+
     def get_object(self):
         """
         Returns the row the view is displaying.

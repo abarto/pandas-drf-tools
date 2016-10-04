@@ -24,7 +24,7 @@ class CreateDataFrameMixin(object):
 
     def perform_create(self, serializer):
         dataframe = self.get_dataframe()
-        return dataframe.append(serializer.validated_data)
+        return self.update_dataframe(dataframe.append(serializer.validated_data))
 
     def get_success_headers(self, data):
         try:
@@ -76,7 +76,7 @@ class UpdateDataFrameMixin(object):
         instance.ix[validated_data.index, validated_data.columns] = validated_data[:]
         dataframe = self.get_dataframe()
         dataframe.ix[instance.index] = instance
-        return dataframe
+        return self.update_dataframe(dataframe)
 
     def partial_update(self, request, *args, **kwargs):
         kwargs['partial'] = True
@@ -94,4 +94,4 @@ class DestroyDataFrameMixin(object):
 
     def perform_destroy(self, instance):
         dataframe = self.get_dataframe()
-        return dataframe.drop(instance.index)
+        return self.update_dataframe(dataframe.drop(instance.index))
