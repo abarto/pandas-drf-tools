@@ -15,7 +15,7 @@ setup(
     url='https://github.com/abarto/pandas-drf-tools',
     author='Agustin Barto',
     author_email='abarto@gmail.com',
-    license='MIT',
+    license='BSD',
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
