@@ -207,7 +207,6 @@ What's missing?
 Feedback
 --------
 
-Comments, tickets and pull requests are welcomed. I'll allocate time to
-this project based on the community's interest on it. You can also hit
-me up on Twitter at `@m4rgin4l <https://twitter.com/m4rgin4l>`__ if you
+Comments, tickets and pull requests are welcomed. You can also reach me
+at `abarto@machinalis.com <mailto:abarto@machinalis.com>`__ if you
 have specific questions.
