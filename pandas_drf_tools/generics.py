@@ -52,6 +52,12 @@ class GenericDataFrameAPIView(APIView):
         """
         return dataframe
 
+    def index_row(self, dataframe):
+        """
+        Indexes the row based on the request parameters.
+        """
+        return dataframe.loc[self.kwargs[self.lookup_url_kwarg]].to_frame().T
+
     def get_object(self):
         """
         Returns the row the view is displaying.
@@ -70,7 +76,7 @@ class GenericDataFrameAPIView(APIView):
         )
 
         try:
-            obj = dataframe.iloc[int(self.kwargs[self.lookup_url_kwarg])].to_frame().T
+            obj = self.index_row(dataframe)
         except (IndexError, KeyError, ValueError):
             raise Http404
 
